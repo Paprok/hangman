@@ -1,6 +1,6 @@
 class View
 
-  def initializer(country_and_capital)
+  def initialize(country_and_capital)
     @country_and_capital = country_and_capital
   end
 
