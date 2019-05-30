@@ -1,13 +1,17 @@
+require_relative 'country_capital'
+
 class FileLoader
+
   def initialize(filename)
     @filename = filename
   end
 
-  def countries_and_capitols
-    map = []
+  def countries_and_capitals
+    list = []
     File.foreach(@filename) do |line|
-      map << line.split('|')
+      list << CountryCapital.new(line.split('|'))
     end
-    return map
+    list
   end
+
 end
