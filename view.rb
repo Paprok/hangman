@@ -9,8 +9,7 @@ class View
     to_show = ''
     size = blank.size
     size -= 1
-    (0..size).each {|i| add_letter_and_space(blank, i, to_show)
-    }
+    (0..size).each { |i| add_letter_and_space(blank, i, to_show) }
     puts to_show
   end
 
