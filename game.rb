@@ -1,17 +1,15 @@
-require_relative 'file_loader'
 require_relative 'view'
+require_relative 'game_data'
 
 class Game
 
-  def initialize(lives)
-    @lives = lives
-    @country_and_capital = get_country_and_capital
-    @blank = create_blank(@country_and_capital.capital)
-    @view = View.new(@country_and_capital)
+  def initialize(view, game_data)
+    @view = view
+    @game_data = game_data
   end
 
   def run
-    while @lives.positive?
+    while @game_data.is_not_finished
       guess
     end
   end
@@ -19,28 +17,21 @@ class Game
   private
 
   def guess
-    @view.show_blank(@blank)
-    @lives -= 1
+    @view.guess_message(@game_data)
+    @view.show_blank(@game_data.blank)
+    guessed = @view.get_guess
+    resolve_guessed(guessed)
   end
 
-  def get_country_and_capital
-    countries_and_capitals = FileLoader.new('country_and_capital.txt').countries_and_capitals
-    n = rand(countries_and_capitals.length)
-    capital_and_country = countries_and_capitals[n]
-    puts "cheat: #{capital_and_country}" #only for testing purposes
-    capital_and_country
+  def resolve_guessed(guessed)
+    guessed.size > 1 ? resolve_letter(guessed) : resolve_word(guessed)
   end
 
-
-  def create_blank(capital)
-    length = capital.size
-    length -= 1
-    blank = ''
-    (0..length).each { |i| blank << get_blank(capital, i) }
-    blank
+  def resolve_letter(guessed)
+    # code here
   end
 
-  def get_blank(capital, i)
-    capital[i] == ' ' ? ' ' : '_'
+  def resolve_word(guessed)
+    # code here
   end
 end
