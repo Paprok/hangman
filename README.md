@@ -1,0 +1,1 @@
+run main.rb to play hangman
