@@ -26,6 +26,12 @@ class View
     guessed.upcase
   end
 
+  def show_wrongly_guessed(wrongly_guessed)
+    guesses = ""
+    wrongly_guessed.each {|guess| guesses += ", #{guess}"}
+    puts("Guessed so far: #{guesses}")
+  end
+
   def announce_loss
     puts 'You lost, better luck next time!'
   end
