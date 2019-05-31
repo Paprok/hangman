@@ -19,7 +19,9 @@ class Game
 
   def guess
     @view.guess_message(@game_data)
+    @view.show_lives(@game_data.lives)
     @view.show_blank(@game_data.blank)
+    @view.show_wrongly_guessed(@game_data.wrongly_guessed)
     guessed = @view.get_guess
     resolve_guessed(guessed)
   end
