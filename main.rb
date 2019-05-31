@@ -1,6 +1,6 @@
 require_relative 'game'
 
-view = View.new
+view = TerminalView.new
 hint_at = 1
 lives = 6
 game_data = GameData.new(lives, hint_at)
