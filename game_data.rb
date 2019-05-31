@@ -2,7 +2,8 @@ require_relative 'file_loader'
 require 'set'
 
 class GameData
-  attr_accessor :is_not_won, :country_and_capital, :blank, :lives, :hint_at, :wrongly_guessed
+  attr_reader :country_and_capital, :lives, :hint_at, :wrongly_guessed
+  attr_accessor :is_not_won, :blank
 
   def initialize(lives, hint_at)
     @lives = lives
