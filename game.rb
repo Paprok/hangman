@@ -1,4 +1,4 @@
-require_relative 'view'
+require_relative 'terminal_view'
 require_relative 'game_data'
 
 class Game
@@ -12,6 +12,7 @@ class Game
     while @game_data.is_not_finished
       guess
     end
+    announce_outcome(@game_data)
   end
 
   private
@@ -33,5 +34,13 @@ class Game
 
   def resolve_word(guessed)
     # code here
+  end
+
+  def announce_outcome(game_data)
+    if game_data.lives < 1
+      @view.announce_loss
+    else
+      @view.announce_win(game_data)
+    end
   end
 end
