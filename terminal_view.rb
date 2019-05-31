@@ -26,7 +26,8 @@ class TerminalView
   end
 
   ##
-  # gets input from user untill consist of only letters and/or spaces
+  # gets input from user until consist of only letters and/or spaces
+  # @return guessed.upcase
   def get_guess
     puts('type letter or whole capital:')
     guessed = gets.chomp
