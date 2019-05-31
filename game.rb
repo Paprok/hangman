@@ -55,6 +55,11 @@ class Game
 
   end
 
+  def set_game_data_if_won
+    capital = @game_data.country_and_capital.capital
+    @game_data.is_not_won = @game_data.blank != capital
+  end
+
   def announce_outcome(game_data)
     if game_data.lives < 1
       @view.announce_loss
