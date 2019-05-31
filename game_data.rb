@@ -21,6 +21,10 @@ class GameData
     @wrongly_guessed.add(guessed)
   end
 
+  def life_lost(number)
+    @lives -= number
+  end
+
   private
 
   def get_country_and_capital
@@ -29,10 +33,6 @@ class GameData
     capital_and_country = countries_and_capitals[n]
     puts "cheat: #{capital_and_country}" #only for testing purposes
     capital_and_country
-  end
-
-  def life_lost(number)
-    @lives -= number
   end
 
   def create_blank(capital)
