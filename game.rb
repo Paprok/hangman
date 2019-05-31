@@ -25,15 +25,32 @@ class Game
   end
 
   def resolve_guessed(guessed)
-    guessed.size > 1 ? resolve_letter(guessed) : resolve_word(guessed)
+    if @game_data.country_and_capital.capital.include? guessed
+      guessed.size > 1 ? resolve_word(guessed) : resolve_letter(guessed)
+      set_game_data_if_won
+    else
+      guessed.size > 1 ? @game_data.life_lost(2) : @game_data.life_lost(1)
+      @game_data.add_wrongly_guessed(guessed)
+    end
   end
 
   def resolve_letter(guessed)
-    # code here
+    capital = @game_data.country_and_capital.capital
+    @game_data.blank = @game_data.blank.chars.map.with_index do |c, i|
+      if capital[i] == guessed
+        guessed
+      else
+        c
+      end
+    end.join
   end
 
   def resolve_word(guessed)
-    # code here
+    size = guessed.size - 1
+    index = @game_data.country_and_capital.capital.index guessed
+    reach = index + size
+    @game_data.blank[index..reach] = guessed
+
   end
 
   def announce_outcome(game_data)
