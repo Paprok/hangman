@@ -7,7 +7,7 @@ class TerminalView
   # shows message with/without hint based on +game_data+
   def guess_message(game_data)
     message = 'GUESS THE CAPITAL'
-    game_data.lives == game_data.hint_at ? puts("#{message} OF #{game_data.country}") : puts("#{message}!")
+    game_data.lives == game_data.hint_at ? puts("#{message} OF #{game_data.country_and_capital.country}") : puts("#{message}!")
   end
 
   ##
