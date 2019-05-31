@@ -7,10 +7,13 @@ class View
 
   def show_blank(blank)
     to_show = ''
-    size = blank.size
-    size -= 1
+    size = blank.size - 1
     (0..size).each {|i| add_letter_and_space(blank, i, to_show)}
     puts to_show
+  end
+
+  def show_lives(lives)
+    puts "#{lives} Lives left"
   end
 
   def get_guess
@@ -23,8 +26,12 @@ class View
     guessed.upcase
   end
 
-  def announce_outcome(game_data)
+  def announce_loss
+    puts 'You lost, better luck next time!'
+  end
 
+  def announce_win(game_data)
+    puts "You won with #{game_data.lives} left!"
   end
 
   private
